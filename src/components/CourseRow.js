@@ -1,39 +1,31 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPencilAlt} from "@fortawesome/free-solid-svg-icons";
-import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 class CourseRow extends React.Component {
     state = {
         editing: false
     }
-
     render() {
-        return (
+        return(
             <li>
                 {
                     !this.state.editing &&
-                    <a onClick={this.props.showEditor} href="#">
+                    <Link to={`/course-editor/${this.props.course._id}`}>
                         {this.props.course.title}
-                    </a>
+                    </Link>
                 }
-                {this.state.editing && <input id={"edit_txt"}/>}
-                {!this.state.editing && <button onClick={() => this.props.deleteCourse(this.props.course)}>
-                    <FontAwesomeIcon icon={faTrash}/>
-                </button>}
-                {!this.state.editing &&<button onClick={() => {
+                {this.state.editing && <input/>}
+                <button onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
+                <button onClick={() => {
                     this.setState({
                         editing: true
                     })
-                }}><FontAwesomeIcon icon={faPencilAlt}/>
-                </button>}
-                {this.state.editing && <button onClick={() => {
+                }}>Edit</button>
+                <button onClick={() => {
                     this.setState({
                         editing: false
                     })
-                    this.props.course.title = document.getElementById("edit_txt").value
-                }}>Save
-                </button>}
+                }}>Save</button>
             </li>
         )
     }
