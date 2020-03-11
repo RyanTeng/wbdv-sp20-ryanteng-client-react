@@ -1,7 +1,7 @@
 import { API_URL } from "../constants/app-constants";
 
-export const createTopic = async (topicId, topic) => {
-    const response = await fetch(`${API_URL}/topics/${topicId}/topics`, {
+export const createTopic = async (lessonId, topic) => {
+    const response = await fetch(`${API_URL}/lessons/${lessonId}/topics`, {
         method: "POST",
         body: JSON.stringify(topic),
         headers: {
@@ -12,8 +12,8 @@ export const createTopic = async (topicId, topic) => {
     return await response.json()
 }
 
-export const findTopicsForLesson = async (topicId) => {
-    const response = await fetch(`${API_URL}/topics/${topicId}/topics`, {
+export const findTopicsForLesson = async (lessonId) => {
+    const response = await fetch(`${API_URL}/lesson/${lessonId}/topics`, {
         headers: {
             'content-type': 'application/json'
         }
@@ -24,6 +24,16 @@ export const findTopicsForLesson = async (topicId) => {
 
 export const findTopicById = async (topicId) => {
     const response = await fetch(`${API_URL}/topics/${topicId}`, {
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json();
+}
+
+export const findAllTopic = async () => {
+    const response = await fetch(`${API_URL}/topics/`, {
         headers: {
             'content-type': 'application/json'
         }

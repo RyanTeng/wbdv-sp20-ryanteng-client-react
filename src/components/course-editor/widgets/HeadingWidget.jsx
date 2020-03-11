@@ -3,11 +3,23 @@ import '../../../styles/Widgets.css';
 import HeadingPreview from "./HeadingPreview";
 
 class HeadingWidgetComponent extends Component {
-  handleTextChange = e => {};
+  state = {
+    newSize: this.props.widget.size,
+    newText: this.props.widget.text,
+    newWidgetTitle: this.props.widget.name
+  };
 
-  handleNameChange = e => {};
+  handleTextChange = e => {
+    this.setState({ newText: e.target.value });
+  };
 
-  handleSizeChange = e => {};
+  handleNameChange = e => {
+    this.setState({ newWidgetTitle: e.target.value });
+  };
+
+  handleSizeChange = e => {
+    this.setState({ newSize: parseInt(e.target.value) });
+  };
 
   render() {
     return (
@@ -18,7 +30,7 @@ class HeadingWidgetComponent extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-7">
-                    <h2>{this.props.widget.name || "Heading Widget"}</h2>
+                    <h2>{this.state.newWidgetTitle}</h2>
                   </div>
                   <div className="col-5">
                     <button className="btn btn-info mx-1 float-left">
@@ -43,7 +55,7 @@ class HeadingWidgetComponent extends Component {
                 </div>
                 <div className="row my-2">
                     <div className="col-12">
-                    <select className="form-control" onChange={this.handleSizeChange} value={this.props.widget.size}>
+                    <select className="form-control" onChange={this.handleSizeChange} value={this.state.newSize}>
                       <option value="1">Heading 1</option>
                       <option value="2">Heading 2</option>
                       <option value="3">Heading 3</option>
@@ -61,7 +73,7 @@ class HeadingWidgetComponent extends Component {
                 <div className="row">
                   <div className="col-12 my-2">
                     <h4>Preview</h4>
-                    <HeadingPreview text={this.props.widget.text} size={this.props.widget.size}/>
+                    <HeadingPreview text={this.state.newText} size={this.state.newSize}/>
                   </div>
                 </div>
               </div>
