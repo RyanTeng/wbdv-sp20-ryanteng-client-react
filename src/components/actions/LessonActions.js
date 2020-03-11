@@ -1,4 +1,4 @@
-import { FIND_ALL_LESSONS, CREATE_LESSON, DELETE_LESSON, UPDATE_LESSON } from "../constants/LessonConstants";
+import { FIND_ALL_LESSONS, CREATE_LESSON, DELETE_LESSON, UPDATE_LESSON } from "../../constants/LessonConstants";
 
 export const findAllLessons = (lessons) => ({
     type: FIND_ALL_LESSONS,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import modulesService from "../../services/ModuleService";
-import moduleActions from "../../actions/ModuleActions";
+import moduleActions from "../actions/ModuleActions";
 import { connect } from "react-redux";
 
 class ModuleListItemComponent extends Component {

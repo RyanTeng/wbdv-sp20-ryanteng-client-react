@@ -1,4 +1,4 @@
-import { FIND_ALL_MODULES, CREATE_MODULE, DELETE_MODULE, UPDATE_MODULE } from "../constants/ModuleConstants";
+import { FIND_ALL_MODULES, CREATE_MODULE, DELETE_MODULE, UPDATE_MODULE } from "../../constants/ModuleConstants";
 
 export const findAllModules = (modules) => ({
     type: FIND_ALL_MODULES,

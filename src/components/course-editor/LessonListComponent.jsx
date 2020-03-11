@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LessonListItemComponent from "./LessonListItemComponent";
 import lessonsService from "../../services/LessonService";
-import lessonActions from "../../actions/LessonActions";
+import lessonActions from "../actions/LessonActions";
 import { connect } from "react-redux";
 
 class LessonListComponent extends Component {

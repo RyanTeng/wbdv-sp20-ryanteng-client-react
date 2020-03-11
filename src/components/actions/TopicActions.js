@@ -1,4 +1,4 @@
-import { FIND_ALL_TOPICS, CREATE_TOPIC, DELETE_TOPIC, UPDATE_TOPIC } from "../constants/TopicConstants";
+import { FIND_ALL_TOPICS, CREATE_TOPIC, DELETE_TOPIC, UPDATE_TOPIC } from "../../constants/TopicConstants";
 
 export const findAllTopics = (topics) => ({
     type: FIND_ALL_TOPICS,

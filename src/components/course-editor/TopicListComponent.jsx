@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TopicListItemComponent from "./TopicListItemComponent";
 import topicsService from "../../services/TopicService";
-import topicActions from "../../actions/TopicActions";
+import topicActions from "../actions/TopicActions";
 import { connect } from "react-redux";
 
 class TopicListComponent extends Component {
