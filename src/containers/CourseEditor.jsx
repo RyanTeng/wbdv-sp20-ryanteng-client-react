@@ -10,6 +10,9 @@ import LessonListComponent from "../components/course-editor/LessonListComponent
 import TopicListComponent from "../components/course-editor/TopicListComponent";
 import HeadingWidgetComponent from "../components/course-editor/widgets/HeadingWidget";
 import "../styles/CourseEditor.css";
+import ParagraphWidgetComponent from "../components/course-editor/widgets/ParagraphWidget";
+import ListWidgetComponent from "../components/course-editor/widgets/ListWidget";
+import ImageWidgetComponent from "../components/course-editor/widgets/ImageWidget";
 
 class CourseEditor extends Component {
   state = {};
@@ -109,8 +112,31 @@ class CourseEditor extends Component {
                       widget={{
                         text: "Heading 1",
                         size: 1,
-                        name: "Heading Widget"
+                        name: "Heading Widget",
+                        type: 1
                       }}
+                    />
+                    <ParagraphWidgetComponent
+                        widget={{
+                          text: "Lorem Ipsum",
+                          name: "Paragraph Widget",
+                          type: 2
+                        }}
+                    />
+                    <ListWidgetComponent
+                      widget={{
+                        text: "Line\nBy\nLine",
+                        name: "List Widget",
+                        type: 3
+                      }}
+                  />
+                    <ImageWidgetComponent
+                        widget={{
+                          text: `${process.env.PUBLIC_URL}/no_selection.svg`,
+                          name: "Image Widget",
+                          type: 4
+
+                        }}
                     />
                   </>
                 )}
