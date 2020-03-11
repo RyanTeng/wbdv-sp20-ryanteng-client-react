@@ -125,7 +125,7 @@ class CourseEditor extends Component {
                     />
                     <ListWidgetComponent
                       widget={{
-                        text: "Line\nBy\nLine",
+                        text: "One\nAt\nA\nTime",
                         name: "List Widget",
                         type: 3
                       }}

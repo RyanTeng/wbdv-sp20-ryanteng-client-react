@@ -6,12 +6,12 @@ const List = ({isUnordered, text}) => {
     if (isUnordered === "UL") {
         return <ul>
             {text.toString().split('\n').map(line =>
-            <li>{line}</li>)}
+            <li key={line}>{line}</li>)}
         </ul>
     } else {
         return <ol>
             {text.toString().split('\n').map(line =>
-                <li>{line}</li>)}
+                <li key={line}>{line}</li>)}
         </ol>
     }
 }
