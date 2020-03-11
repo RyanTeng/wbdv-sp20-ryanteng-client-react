@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ModuleListItemComponent from "./ModuleListItemComponent";
 import modulesService from "../../services/ModuleService";
-import ModuleActions from "../../actions/ModuleActions";
+import moduleAction from "../../actions/ModuleActions"
 import { connect } from "react-redux";
 
 class ModuleListComponent extends Component {
@@ -101,13 +101,13 @@ const dispatchToPropertyMapper = dispatch => {
   return {
     findModulesForCourse: courseId => {
       modulesService.findModulesForCourse(courseId).then(modules => {
-        dispatch(ModuleActions.findAllModules(modules));
+        dispatch(mooduleActions.findAllModules(modules));
       });
     },
 
     createModule: (courseId, module) => {
       modulesService.createModule(courseId, module).then(newModule => {
-        dispatch(ModuleActions.createModule(newModule));
+        dispatch(moduleActions.createModule(newModule));
       });
     }
   };
