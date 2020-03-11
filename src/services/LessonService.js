@@ -1,33 +1,64 @@
-export const findLessonsForModule = (moduleId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/modules/${moduleId}/lessons`)
-        .then(response => response.json())
+import { API_URL } from "../constants/app-constants";
 
-export const createLesson = (lessonId, lesson) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/modules/${lessonId}/lessons`, {
-        method: 'POST',
-        body: JSON.stringify(lesson)
-    }).then(response => response.json())
-
-export const deleteLesson = (lessonId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/lessons/${lessonId}`, {
-        method: "DELETE"
+export const createLesson = async (moduleId, lesson) => {
+    const response = await fetch(`${API_URL}/modules/${moduleId}/lessons`, {
+        method: "POST",
+        body: JSON.stringify(lesson),
+        headers: {
+            'content-type': 'application/json'
+        }
     })
-        .then(response => response.json())
 
-export const updateLesson = (lessonId, lesson) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/lessons/${lessonId}`, {
+    return await response.json()
+}
+
+export const findLessonsForModule = async (moduleId) => {
+    const response = await fetch(`${API_URL}/modules/${moduleId}/lessons`, {
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json()
+}
+
+export const findLessonById = async (lessonId) => {
+    const response = await fetch(`${API_URL}/lessons/${lessonId}`, {
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json();
+}
+
+export const updateLesson = async (lessonId, lesson) => {
+    const response = await fetch(`${API_URL}/lessons/${lessonId}`, {
         method: 'PUT',
-        body: JSON.stringify(lesson)
-    }).then(response => response.json())
+        body: JSON.stringify(lesson),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
 
-export const findLesson = (lessonId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/lessons/${lessonId}`)
-        .then(response => response.json())
+    return await response.json();
+}
+
+export const deleteLesson = async (lessonId) => {
+    const response = await fetch(`${API_URL}/lessons/${lessonId}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json();
+}
 
 export default {
-    deleteLesson,
-    findLessonsForModule,
     createLesson,
+    findLessonsForModule,
+    findLessonById,
     updateLesson,
-    findLesson
+    deleteLesson
 }

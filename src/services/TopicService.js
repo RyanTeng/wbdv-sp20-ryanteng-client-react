@@ -1,33 +1,64 @@
-export const findTopicsForLesson = (lessonId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/lessons/${lessonId}/topics`)
-        .then(response => response.json())
+import { API_URL } from "../constants/app-constants";
 
-export const createTopic = (lessonId, topic) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/lessons/${lessonId}/topics`, {
-        method: 'POST',
-        body: JSON.stringify(topic)
-    }).then(response => response.json())
-
-export const deleteTopic = (topicId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/topics/${topicId}`, {
-        method: "DELETE"
+export const createTopic = async (topicId, topic) => {
+    const response = await fetch(`${API_URL}/topics/${topicId}/topics`, {
+        method: "POST",
+        body: JSON.stringify(topic),
+        headers: {
+            'content-type': 'application/json'
+        }
     })
-        .then(response => response.json())
 
-export const updateTopic = (topicId, topic) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/topics/${topicId}`, {
+    return await response.json()
+}
+
+export const findTopicsForLesson = async (topicId) => {
+    const response = await fetch(`${API_URL}/topics/${topicId}/topics`, {
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json()
+}
+
+export const findTopicById = async (topicId) => {
+    const response = await fetch(`${API_URL}/topics/${topicId}`, {
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json();
+}
+
+export const updateTopic = async (topicId, topic) => {
+    const response = await fetch(`${API_URL}/topics/${topicId}`, {
         method: 'PUT',
-        body: JSON.stringify(topic)
-    }).then(response => response.json())
+        body: JSON.stringify(topic),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
 
-export const findTopic = (topicId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/001642349/topics/${topicId}`)
-        .then(response => response.json())
+    return await response.json();
+}
+
+export const deleteTopic = async (topicId) => {
+    const response = await fetch(`${API_URL}/topics/${topicId}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    return await response.json();
+}
 
 export default {
-    deleteTopic,
-    findTopicsForLesson,
     createTopic,
+    findTopicsForLesson,
+    findTopicById,
     updateTopic,
-    findTopic
+    deleteTopic
 }
