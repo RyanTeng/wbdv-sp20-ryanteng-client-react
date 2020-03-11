@@ -101,13 +101,13 @@ const dispatchToPropertyMapper = dispatch => {
   return {
     findModulesForCourse: courseId => {
       modulesService.findModulesForCourse(courseId).then(modules => {
-        dispatch(mooduleActions.findAllModules(modules));
+        dispatch(moduleAction.findAllModules(modules));
       });
     },
 
     createModule: (courseId, module) => {
       modulesService.createModule(courseId, module).then(newModule => {
-        dispatch(moduleActions.createModule(newModule));
+        dispatch(moduleAction.createModule(newModule));
       });
     }
   };
